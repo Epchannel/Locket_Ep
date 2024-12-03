@@ -16,6 +16,5 @@ workflows:
           flutter clean
           flutter pub get
           flutter build ios --release --no-codesign
-    publish:
-      ios:
-        artifact: build/ios/ipa/Runner.ipa
+    artifacts:
+      - build/ios/ipa/Runner.ipa
