@@ -3,8 +3,6 @@ workflows:
     name: iOS Release Build
     environment:
       flutter: stable
-      macos:
-        xcode: 13.4
     scripts:
       - name: Set up certificate and provisioning profile
         script: |
@@ -13,9 +11,11 @@ workflows:
           security create-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
           security import ~/certificates/ios_cert.p12 -k ~/Library/Keychains/build.keychain
           security unlock-keychain -p "$KEYCHAIN_PASSWORD" ~/Library/Keychains/build.keychain
-    code-signing:
-      certificate: "$IOS_CERTIFICATE"
-      provisioning-profile: "$IOS_PROVISIONING_PROFILE"
-    build:
+      - name: Build iOS Release
+        script: |
+          flutter clean
+          flutter pub get
+          flutter build ios --release --no-codesign
+    publish:
       ios:
-        release: true
+        artifact: build/ios/ipa/Runner.ipa
