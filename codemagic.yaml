@@ -19,6 +19,10 @@ workflows:
       - name: Create IPA from app
         script: |
           mkdir -p build/ios/ipa
-          xcrun -sdk iphoneos PackageApplication -v build/ios/iphoneos/Runner.app -o build/ios/ipa/Runner.ipa
+          # Tạo file IPA bằng xcodebuild
+          xcodebuild -exportArchive \
+            -archivePath build/ios/archive/Runner.xcarchive \
+            -exportPath build/ios/ipa \
+            -exportOptionsPlist /path/to/your/ExportOptions.plist
     artifacts:
       - build/ios/ipa/Runner.ipa
