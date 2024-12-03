@@ -83,7 +83,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
 
   Widget _buildTextTitle() {
     return const Text(
-      'Login',
+      'Đăng nhập',
       style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w900),
     );
   }
@@ -97,7 +97,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
           Container(
             alignment: Alignment.centerLeft,
             child: const Text(
-              "Password",
+              "Mật khẩu",
               style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w900),
             ),
           ),
@@ -108,10 +108,10 @@ class _LoginScreenViewState extends State<LoginScreenView> {
               obscureText: true,
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
-                  return "Please enter your password";
+                  return "Vui lòng nhập mật khẩu";
                 }
                 if (value.length < 6) {
-                  return "Password must be at least 6 characters";
+                  return "Mật khẩu phải có ít nhất 6 ký tự";
                 }
                 return null;
               },
@@ -123,7 +123,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Color(Constants.yellowColor), width: 2.0),
                 ),
-                hintText: "Enter your password",
+                hintText: "Nhập mật khẩu của bạn",
                 hintStyle: TextStyle(
                   color: Colors.white.withOpacity(0.5),
                   fontSize: 16,
@@ -188,13 +188,13 @@ class _LoginScreenViewState extends State<LoginScreenView> {
               controller: _emailTextController,
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
-                  return "Please enter your email";
+                  return "Vui lòng nhập email của bạn";
                 }
                 final emailValid = RegExp(
                   Constants.emailRegex,
                 ).hasMatch(value);
                 if (!emailValid) {
-                  return "Please enter a valid email";
+                  return "Vui lòng nhập email hợp lệ";
                 }
                 return null;
               },
@@ -206,7 +206,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Color(Constants.yellowColor), width: 2.0),
                 ),
-                hintText: "Enter your email",
+                hintText: "Nhập email của bạn",
                 hintStyle: TextStyle(
                   color: Colors.white.withOpacity(0.5),
                   fontWeight: FontWeight.w900,
@@ -229,7 +229,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
     return Container(
       margin: const EdgeInsets.only(top: 10),
       child: const Text(
-        "© 2024 Vu Tien Dat",
+        "© 2024 Pham Hong Hiep",
         style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w900),
       ),
     );
