@@ -16,5 +16,9 @@ workflows:
           flutter clean
           flutter pub get
           flutter build ios --release --no-codesign
+      - name: Create IPA from app
+        script: |
+          mkdir -p build/ios/ipa
+          xcrun -sdk iphoneos PackageApplication -v build/ios/iphoneos/Runner.app -o build/ios/ipa/Runner.ipa
     artifacts:
-      - build/ios/iphoneos/Runner.ipa
+      - build/ios/ipa/Runner.ipa
